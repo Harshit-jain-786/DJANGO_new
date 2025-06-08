@@ -1,132 +1,75 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <title>Contact Page</title>
-     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        nav {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #333;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-        p {
-            text-align: center;
-            margin: 20px 0;
-        }
-        form {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        form label {
-            display: block;
-            margin-bottom: 10px;
-        }
-        form input, form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        form button {
-            background-color: #333;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        form button:hover {
-            background-color: #555;
-        }
-        form input:focus, form textarea:focus {
-            border-color: #333;
-            outline: none;
-        }
-        form input[type="email"] {
-            margin-bottom: 20px;
-        }
-        form textarea {
-            height: 100px;
-        }
-        form button[type="submit"] {
-            width: 100%;
-        }
-        form button[type="submit"]:hover {
-            background-color: #555;
-        }
-        footer p {
-            margin: 0;
-        }
-        footer {
-            margin-top: 20px;
-        }
-    </style>
 </head>
+
 <body>
-    <nav>
-        <ul>
-            <li><a href="{% url 'Home' %}">Home</a></li>
-            <li><a href="{% url 'about' %}">Blog</a></li>
-            <li><a href="{% url 'blog' %}">About</a></li>
-            <li><a href="{% url 'contact' %}">Contact</a></li>
-        </ul>
-    </nav>
-    <h1>Welcome to the Contact Page</h1>
-    <p>This is a simple contact page template.</p>
-    <p>Feel free to customize it as per your needs.</p>
-    <form action="/submit_contact" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <br>
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
-        <br>
-        <button type="submit">Submit</button>
-    </form>
-        <footer>
+<nav>
+    <div class="nav-brand">
+        <h1>My Portfolio</h1>
+    </div>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    <ul class="nav-links">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'project' %}">Projects</a></li>
+        <li><a href="{% url 'skills' %}">Skills</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+        <li><a href="{% url 'signup' %}">Sign-Up</a></li>
+    </ul>
+</nav>
+    <div class="contact-main">
+        <div class="contact-form-section">
+            <h1>Contact Me</h1>
+            <p>
+                Feel free to reach out using the form below. I’ll get back to you as
+                soon as possible!
+            </p>
+            <form action="{% url 'saveenquiry' %}" method="post">
+                {% csrf_token %}
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" required />
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        <div class="contact-info-section">
+            <h3>Contact Info</h3>
+            <p><i class="fas fa-envelope"></i> hj1287091@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +91-8968850149</p>
+            <p><i class="fas fa-map-marker-alt"></i> Jalandhar, Punjab, India</p>
+            <div class="socials">
+                <a href="https://github.com/Harshit-jain-786" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/harshit-jain-2233a8263/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:hj1287091@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+    <footer>
         <p>&copy; 2025 Your Website Name</p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
+
 </html>

@@ -17,11 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",views.index, name="Home"),  # Include the app's URLs
-    path("about/", views.about,name="about"),
+    path("",views.index, name="index"),  # Include the app's URLs
+    path("project/", views.project,name="project"),
     path("contact/", views.contact, name="contact"),
-    path("blog/", views.blog, name="blog"),
-]
+    path("skills/", views.skills, name="skills"),
+    path("signup/", views.signup, name="signup"),
+    path("login/", views.login, name="login"),
+    path("saveenquiry/", views.saveenquiry, name="saveenquiry"),
+    path("savesignup/", views.savesignup, name="savesignup"),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

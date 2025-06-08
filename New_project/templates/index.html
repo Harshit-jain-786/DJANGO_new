@@ -1,71 +1,71 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>INDEX page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        nav {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-        }
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #333;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-        p {
-            text-align: center;
-            margin: 20px 0;
-        }
-                footer p {
-            margin: 0;
-        }
-        footer {
-            margin-top: 20px;
-        }
-    </style>
+
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="{% url 'Home' %}">Home</a></li>
-            <li><a href="{% url 'about' %}">Blog</a></li>
-            <li><a href="{% url 'blog' %}">About</a></li>
-            <li><a href="{% url 'contact' %}">Contact</a></li>
-        </ul>
-    </nav>
-    <h1>Welcome to the Index Page</h1>
-    <p>This is a simple index page template.</p>
+<nav>
+    <div class="nav-brand">
+        <h1>My Portfolio</h1>
+    </div>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    <ul class="nav-links">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'project' %}">Projects</a></li>
+        <li><a href="{% url 'skills' %}">Skills</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+        <li><a href="{% url 'signup' %}">Sign-Up</a></li>
+    </ul>
+</nav>
+    <div class="hero-section">
+        <h1>Welcome to My Portfolio</h1>
+        <p>
+            Hi, I'm <b>Harshit Jain</b>, a passionate developer skilled in web and software development.<br>
+            Explore my projects, skills, and feel free to get in touch!
+        </p>
+        <div class="hero-btns">
+            <a href="{% url 'project' %}">View Projects</a>
+            <a href="{% url 'contact' %}">Contact Me</a>
+        </div>
+    </div>
+    <div class="about-section">
+        <h2>About Me</h2>
+        <p>
+            I am a dedicated and creative developer with experience in building dynamic web applications using modern technologies.
+            My expertise includes both frontend and backend development, and I enjoy solving complex problems and learning new skills.
+        </p>
+    </div>
+    <div class="featured-skills">
+        <h2>Featured Skills</h2>
+        <div class="skills-list">
+            <div class="skill-item"><i class="fab fa-html5"></i>HTML5</div>
+            <div class="skill-item"><i class="fab fa-css3-alt"></i>CSS3</div>
+            <div class="skill-item"><i class="fab fa-js-square"></i>JavaScript</div>
+            <div class="skill-item"><i class="fab fa-python"></i>Python</div>
+            <div class="skill-item"><i class="fab fa-react"></i>React</div>
+            <div class="skill-item"><i class="fas fa-leaf"></i>Django</div>
+            <div class="skill-item"><i class="fab fa-node-js"></i>Express.js</div>
+            <div class="skill-item"><i class="fas fa-database"></i>MongoDB</div>
+        </div>
+    </div>
+    <div class="cta-section">
+        <h2>Let's Work Together!</h2>
+        <p>
+            Interested in collaborating or have a project in mind? <br>
+            Reach out and let's build something amazing together.
+        </p>
+        <a href="{% url 'contact' %}">Get in Touch</a>
+    </div>
     <footer>
         <p>&copy; 2025 Your Website Name</p>
     </footer>
